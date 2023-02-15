@@ -9,9 +9,9 @@ function Home() {
         <>
             <Navbar />
             <Hero />
-            <div class="container">
+            <div className="container">
                 <h2>popular recipes</h2>
-                <div class="row">
+                <div className="row">
                     <PopularRecipes />
                     <PopularRecipes />
                     <PopularRecipes />

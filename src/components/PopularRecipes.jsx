@@ -5,11 +5,11 @@ function PopularRecipes() {
     return (
         <>
 
-            <div class="col-sm-3">
-                <div class="card-body">
-                    <img src={bg2} class="card-img-top" alt="..." />
-                    <h5 class="card-title a" >Recipe 1</h5>
-                    <p class="card-text" >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            <div className="col-sm-3">
+                <div className="card-body">
+                    <img src={bg2} className="card-img-top" alt="..." />
+                    <h5 className="card-title a" >Recipe 1</h5>
+                    <p className="card-text" >Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                      sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                 </div>
             </div>

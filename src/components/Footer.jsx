@@ -3,17 +3,17 @@ import React from 'react'
 function Footer() {
   return (
     <footer id='footer'>
-      <div class="footer-top">
-        <div class="container">
-          <div class="row">
+      <div className="footer-top">
+        <div className="container">
+          <div className="row">
 
-            <div class="col-lg-5 col-md-6">
-              <div class="footer-info">
+            <div className="col-lg-5 col-md-6">
+              <div className="footer-info">
                 <h3>MyCookBook</h3>
               </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 footer-links">
+            <div className="col-lg-4 col-md-6 footer-links">
               <h4>Useful Links</h4>
               <ul>
                 <li> <a href="#">Home</a></li>
@@ -21,7 +21,7 @@ function Footer() {
               </ul>
             </div>
 
-            <div class="col-lg-3 col-md-6 footer-links">
+            <div className="col-lg-3 col-md-6 footer-links">
               <h4>Our Services</h4>
               <ul>
                 <li> <a href="#">Vegetarian</a></li>
@@ -33,7 +33,7 @@ function Footer() {
           </div>
         </div>
       </div>
-      <div class="container">
+      <div className="container">
                     <p align="center">&copy; Copyright <strong><span>MyCookBook</span></strong>. All Rights Reserved</p>
                   </div>
     </footer>

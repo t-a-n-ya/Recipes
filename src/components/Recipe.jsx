@@ -1,48 +1,60 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
 import pizza from '../img/pizza.jpg'
 
 
 function Recipe() {
+
+  const [recipe, setrecipe] = useState([])
+  const [ingredients, setingredients] = useState([])
+
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': 'b54b5f04afmsh0b1190d16ea1fb7p144f72jsnabda31af8611',
+      'X-RapidAPI-Host': 'random-recipes.p.rapidapi.com'
+    }
+  };
+  useEffect(() => {
+    fetch('https://random-recipes.p.rapidapi.com/ai-quotes/1', options)
+      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+        let res = response.map((item) => {
+          setrecipe(item)
+          setingredients(item.ingredients)
+        })
+      })
+      .catch(err => console.error(err));
+  }, [])
+
+
   return (
     <>
       <Navbar />
       <div>
-      <div className='a-recipe'>
-        <div className='b'>
-          <div className='c'>
-            <img src={pizza} width='450px' height='600px'/>
-            <div className='recipe-info'>
-              <h2>Recipe name</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                quis sed do eiusmod tempor incididunt ut labore et nostrud ut aliquip ex ea commodo consequate</p>
-              <div style={{display:"flex", justifyContent:"space-between",flexDirection:"column"}}>
-                <strong>prep time : 5 min</strong>
-                <strong>cooking time : 30 min</strong>
-                <strong>serving : 4</strong>
-              </div>
+        <div className='a-recipe'>
+          <div className='b'>
+            <div className='c'>
+            <h2>{recipe.title}</h2>
+              <img src={recipe.image} className='recipe-img' alt='recipe' />
             </div>
           </div>
         </div>
-      </div>
-      <div class='container'>
-        <h1>Ingredients</h1>
-        <p>hykhhhlhlu</p>
-        <p>hykhhhlhlu</p>
-        <p>hykhhhlhlu</p>
-        <p>hykhhhlhlu</p>
-        <p>hykhhhlhlu</p>
-        <h1>Directions</h1>
-        <strong>step 1</strong>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-            <strong>step 2</strong>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-            <strong>step 3</strong>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-      </div>
+        <div className='container'>
+          <h1>Ingredients</h1>
+          {ingredients &&
+            ingredients.map((ingredient) => {
+              return <p>{ingredient}</p>
+            })
+          }
+          <h1>Directions</h1>
+          {recipe && recipe.instructions &&
+            recipe.instructions.map((a) => {
+              return <p>--{" " + a.text}</p>
+            })
+          }
+        </div>
       </div>
     </>
   )
